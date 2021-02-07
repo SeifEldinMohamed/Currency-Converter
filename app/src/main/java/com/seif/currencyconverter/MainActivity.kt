@@ -23,6 +23,7 @@ class MainActivity : AppCompatActivity() {
     var BaseCurrency = "EUR"
     var ConvertedToCurrency = "USD"
     var conversionRate = 0f
+    var currencyName = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -105,7 +106,9 @@ class MainActivity : AppCompatActivity() {
         if (edit_firstConversion != null && edit_firstConversion.text.isNotEmpty()
                 && edit_firstConversion.text.isNotBlank()) {
             // add api url
-            val APi = "https://api.ratesapi.io/api/latest?base=$BaseCurrency&symbols=$ConvertedToCurrency"
+           // val APi = "https://api.ratesapi.io/api/latest?base=$BaseCurrency&symbols=$ConvertedToCurrency"
+            val Api = "https://v6.exchangerate-api.com/v6/6e9cb6f457854c2f4b20c09b/latest/$BaseCurrency"
+            val CurrencyNameApi = "https://api.vatcomply.com/currencies"
             if (BaseCurrency == ConvertedToCurrency) {
                 Toast.makeText(this, "cannot convert the same currency!", Toast.LENGTH_LONG).show()
             } else { // get api data using coroutines
@@ -114,15 +117,33 @@ class MainActivity : AppCompatActivity() {
                 GlobalScope.launch(Dispatchers.IO) {
                     try {
                         // takes url from internet and it reads it then gives us the information each time i call it.
-                        val apiResult = URL(APi).readText()
+                        val apiResult = URL(Api).readText()
                         val jsonObject = JSONObject(apiResult)
-                        conversionRate = jsonObject.getJSONObject("rates").getString(ConvertedToCurrency).toFloat()
-                        Log.d("main", "$conversionRate")
-                        Log.d("main", apiResult)
+
+                        val apiResult2 = URL(CurrencyNameApi).readText()
+                        val jsonObject2 = JSONObject(apiResult2)
+
+                        conversionRate = jsonObject.getJSONObject("conversion_rates").getString(ConvertedToCurrency).toFloat()
+                        Log.d("main", "conversion rate : $conversionRate")
+                        Log.d("main", "api result = $apiResult")
+                        Log.d("main", "conversion rate : $ConvertedToCurrency")
+
+                        if (ConvertedToCurrency == "EGP"){
+                            currencyName = ""
+
+                        }
+                        else{
+                            currencyName = jsonObject2.getJSONObject(ConvertedToCurrency).getString("name").toString()
+
+                        }
+
+
                         // to update the Ui
                         withContext(Dispatchers.Main) {
                             val text = ((edit_firstConversion.text.toString().toFloat()) * conversionRate).toString()
                             edit_secondConversion.setText(text)
+                                txt_currencyName.text = "$text $currencyName"
+
 
                         }
 

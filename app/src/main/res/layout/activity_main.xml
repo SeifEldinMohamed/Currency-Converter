@@ -37,12 +37,16 @@
                     android:layout_height="wrap_content"
                     android:ems="5"
                     android:hint="From"
+                    android:layout_marginRight="10dp"
+                    android:textSize="20sp"
                     android:inputType="number"/>
 
                 <Spinner
+                    android:id="@+id/spinner_firstConversion"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/spinner_firstConversion"/>
+                    android:layout_marginBottom="3dp"
+                    android:layout_gravity="bottom"/>
 
             </LinearLayout>
 
@@ -59,12 +63,17 @@
                     android:layout_height="wrap_content"
                     android:ems="5"
                     android:hint="To"
+                    android:layout_marginRight="10dp"
+                    android:textSize="20sp"
                     android:inputType="number"/>
 
                 <Spinner
+                    android:id="@+id/spinner_secondConversion"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/spinner_secondConversion"/>
+                    android:layout_marginBottom="3dp"
+
+                    android:layout_gravity="bottom"/>
 
             </LinearLayout>
 

@@ -1,28 +1,61 @@
 <resources>
     <string name="app_name">Currency Converter</string>
     <string-array name="currencies">
-        <item>USD</item>
-        <item>EUR</item>
-        <item>GBP</item>
-        <item>DKK</item>
-        <item>SEK</item>
-        <item>AUD</item>
-        <item>CAD</item>
-        <item>JPY</item>
-        <item>EGP</item>
+        <item>USD</item> // US Dollar
+        <item>EUR</item> // Euro
+        <item>GBP</item> // British Pound
+        <item>AUD</item> // Australian Dollar
+        <item>CAD</item> // Canadian Dollar
+        <item>JPY</item> // Japanese Yen
+        <item>RUB</item> // Russian Ruble
+
+        <item>EGP</item> // Egyptian pound
+        <item>DZD</item> // Algerian dinar
+        <item>BHD</item> // Bahraini dinar
+        <item>IQD</item> // Iraqi dinar
+        <item>JOD</item> // Jordanian dinar
+        <item>KWD</item> // Kuwaiti dinar
+        <item>LBP</item> // Lebanese pound
+        <item>LYD</item> // Libyan dinar
+        <item>MAD</item> // Moroccan dirham
+        <item>QAR</item> // Qatari riyal
+        <item>SAR</item> // Saudi riyal
+        <item>SDG</item> // Sudanese pound
+        <item>SYP</item> // Syrian pound
+        <item>AED</item> // United Arab Emirates dirham
+        <item>YER</item> // Yemeni rial
+        <item>TND</item> // Tunisian dinar
+        <item>OMR</item> // Omani rial
 
     </string-array>
 
     <string-array name="currencies2">
-        <item>EGP</item>
-        <item>USD</item>
-        <item>EUR</item>
-        <item>GBP</item>
-        <item>DKK</item>
-        <item>SEK</item>
-        <item>AUD</item>
-        <item>CAD</item>
-        <item>JPY</item>
+        <item>EGP</item> // Egyptian pound
+        <item>USD</item> // US Dollar
+        <item>EUR</item> // Euro
+        <item>GBP</item> // British Pound
+        <item>AUD</item> // Australian Dollar
+        <item>CAD</item> // Canadian Dollar
+        <item>JPY</item> // Japanese Yen
+        <item>RUB</item> // Russian Ruble
+
+        <item>DZD</item> // Algerian dinar
+        <item>BHD</item> // Bahraini dinar
+        <item>IQD</item> // Iraqi dinar
+        <item>JOD</item> // Jordanian dinar
+        <item>KWD</item> // Kuwaiti dinar
+        <item>LBP</item> // Lebanese pound
+        <item>LYD</item> // Libyan dinar
+        <item>MAD</item> // Moroccan dirham
+        <item>QAR</item> // Qatari riyal
+        <item>SAR</item> // Saudi riyal
+        <item>SDG</item> // Sudanese pound
+        <item>SYP</item> // Syrian pound
+        <item>AED</item> // United Arab Emirates dirham
+        <item>YER</item> // Yemeni rial
+        <item>TND</item> // Tunisian dinar
+        <item>OMR</item> // Omani rial
+
 
     </string-array>
 </resources>

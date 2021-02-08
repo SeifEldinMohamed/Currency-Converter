@@ -81,7 +81,6 @@ class MainActivity : AppCompatActivity() {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 BaseCurrency = parent?.getItemAtPosition(position).toString()
                 getApiResult()
-
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -93,7 +92,6 @@ class MainActivity : AppCompatActivity() {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 ConvertedToCurrency = parent?.getItemAtPosition(position).toString()
                 getApiResult()
-
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -106,45 +104,29 @@ class MainActivity : AppCompatActivity() {
         if (edit_firstConversion != null && edit_firstConversion.text.isNotEmpty()
                 && edit_firstConversion.text.isNotBlank()) {
             // add api url
-           // val APi = "https://api.ratesapi.io/api/latest?base=$BaseCurrency&symbols=$ConvertedToCurrency"
             val Api = "https://v6.exchangerate-api.com/v6/6e9cb6f457854c2f4b20c09b/latest/$BaseCurrency"
             val CurrencyNameApi = "https://api.vatcomply.com/currencies"
             if (BaseCurrency == ConvertedToCurrency) {
                 Toast.makeText(this, "cannot convert the same currency!", Toast.LENGTH_LONG).show()
-            } else { // get api data using coroutines
-                // I gonna to add Dispatchers.IO bec: it gonna to be retrieving data
-                // and this is the one we use for retrieving data.
+            }
+            else { // get api data using coroutines
+                  // I gonna to add Dispatchers.IO bec: it gonna to be retrieving data
+                 // and this is the one we use for retrieving data.
                 GlobalScope.launch(Dispatchers.IO) {
                     try {
                         // takes url from internet and it reads it then gives us the information each time i call it.
                         val apiResult = URL(Api).readText()
                         val jsonObject = JSONObject(apiResult)
-
-                        val apiResult2 = URL(CurrencyNameApi).readText()
-                        val jsonObject2 = JSONObject(apiResult2)
-
                         conversionRate = jsonObject.getJSONObject("conversion_rates").getString(ConvertedToCurrency).toFloat()
+
                         Log.d("main", "conversion rate : $conversionRate")
                         Log.d("main", "api result = $apiResult")
                         Log.d("main", "conversion rate : $ConvertedToCurrency")
-
-                        if (ConvertedToCurrency == "EGP"){
-                            currencyName = ""
-
-                        }
-                        else{
-                            currencyName = jsonObject2.getJSONObject(ConvertedToCurrency).getString("name").toString()
-
-                        }
-
-
                         // to update the Ui
                         withContext(Dispatchers.Main) {
                             val text = ((edit_firstConversion.text.toString().toFloat()) * conversionRate).toString()
                             edit_secondConversion.setText(text)
-                                txt_currencyName.text = "$text $currencyName"
-
-
+                            txt_currencyName.text = "$text $currencyName"
                         }
 
                     } catch (e: Exception) {
